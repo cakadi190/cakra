@@ -6,32 +6,29 @@ class WelcomeHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            "Selamat Datang",
-            style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
-                )
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          "Selamat Datang",
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+              )
           ),
-          Text(
-            "Selamat datang di aplikasi Cakap Pramuka",
-            style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal
-                )
-            ),
+        ),
+        Text(
+          "Selamat datang di aplikasi Cakap Pramuka",
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal
+              )
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
