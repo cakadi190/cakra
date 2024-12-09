@@ -40,13 +40,13 @@ class ThemeController extends GetxController {
   );
 
   static final darkTheme = ThemeData(
-    primaryColor: Colors.brown[300],
-    primarySwatch: Colors.brown,
+    primaryColor: Colors.grey[300],
+    primarySwatch: Colors.grey,
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.brown[900],
+    scaffoldBackgroundColor: Colors.grey[900],
     textTheme: GoogleFonts.signikaTextTheme(ThemeData.dark().textTheme),
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.brown[900],
+      backgroundColor: Colors.grey[900],
       elevation: 0,
       iconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: GoogleFonts.signika(
@@ -57,12 +57,12 @@ class ThemeController extends GetxController {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.brown[300],
+        backgroundColor: Colors.grey[300],
         foregroundColor: Colors.white,
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Colors.brown[300],
+      backgroundColor: Colors.grey[300],
     ),
   );
 

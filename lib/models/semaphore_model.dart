@@ -1,0 +1,3 @@
+class SemaphoreModel {
+  _data() {}
+}
