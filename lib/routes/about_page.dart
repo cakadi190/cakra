@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
+
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
+  PackageInfo? _packageInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPackageInfo();
+  }
+
+  Future<void> _loadPackageInfo() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = packageInfo;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'About',
-          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: Center(
@@ -19,28 +38,17 @@ class AboutPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Cakra',
-                style: Theme.of(context).textTheme.displayLarge,
-              ),
+              if (_packageInfo != null)
+                Text(
+                  '${_packageInfo?.appName}',
+                ),
               const SizedBox(
                 height: 16,
               ),
-              FutureBuilder<PackageInfo>(
-                future: PackageInfo.fromPlatform(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(
-                      '${snapshot.data?.appName}',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    );
-                  } else {
-                    return const Text('');
-                  }
-                },
-              ),
+              if (_packageInfo != null)
+                Text(
+                  '${_packageInfo?.version}',
+                ),
             ],
           ),
         ),

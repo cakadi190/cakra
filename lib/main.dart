@@ -1,13 +1,17 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:cakra/constants/theme.dart';
+import 'package:cakra/helpers/device_helper.dart';
 import 'package:desktop_window/desktop_window.dart';
 
 import 'package:cakra/routes/home_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get_storage/get_storage.dart';
 
 void main() async {
+  await GetStorage.init();
+  
   if (Platform.isWindows) {
     WidgetsFlutterBinding.ensureInitialized();
     await DesktopWindow.setMinWindowSize(const Size(1280, 720));
@@ -24,13 +28,8 @@ class CakraApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cakra',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: GoogleFonts.signikaTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
-        useMaterial3: true,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const CakraLandingPage(),
     );
   }
@@ -47,6 +46,7 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
   late Timer _navigationTimer;
   late Timer _textRotationTimer;
   final TapGestureRecognizer _tapGestureRecognizer = TapGestureRecognizer();
+  final DeviceHelper _deviceHelper = DeviceHelper();
 
   final List<String> _messages = [
     "Mohon Tunggu Sebentar",
@@ -68,6 +68,7 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
     super.initState();
     _startTextRotation();
 
+    _deviceHelper.initTheme(context);
     _navigationTimer = Timer(const Duration(seconds: 5), _navigateToHomePage);
   }
 
@@ -145,7 +146,7 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
                                   text: "Kodingin Digital Nusantara",
                                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.brown,
+                                    color: Theme.of(context).colorScheme.primary,
                                     decoration: TextDecoration.underline,
                                   ),
                                   recognizer: _tapGestureRecognizer

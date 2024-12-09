@@ -1,9 +1,14 @@
 import 'package:cakra/models/navigation_tap_model.dart';
 import 'package:flutter/material.dart';
 
-class HomeGridNavigation extends StatelessWidget {
+class HomeGridNavigation extends StatefulWidget {
   const HomeGridNavigation({super.key});
 
+  @override
+  State<HomeGridNavigation> createState() => _HomeGridNavigationState();
+}
+
+class _HomeGridNavigationState extends State<HomeGridNavigation> {
   List<NavigationTapModel> _getNavigationItems(BuildContext context) => [
         NavigationTapModel(
           label: 'Semaphore',
@@ -27,12 +32,12 @@ class HomeGridNavigation extends StatelessWidget {
         ),
         NavigationTapModel(
           label: 'Persandian',
-          image: 'assets/images/icons/paper-plane.png',
+          image: 'assets/images/icons/padlock.png',
           onTapTarget: () => debugPrint('Item 5 clicked'),
         ),
         NavigationTapModel(
-          label: 'Quiz',
-          image: 'assets/images/icons/quiz.png',
+          label: 'P3K',
+          image: 'assets/images/icons/first-aid-box.png',
           onTapTarget: () => debugPrint('Item 7 clicked'),
         ),
         NavigationTapModel(
@@ -124,3 +129,4 @@ class HomeGridNavigation extends StatelessWidget {
     );
   }
 }
+

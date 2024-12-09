@@ -83,12 +83,15 @@ flutter:
     - assets/images/icons/semaphore.png
     - assets/images/icons/pramuka.png
     - assets/images/icons/quiz.png
+    - assets/images/icons/padlock.png
     - assets/images/icons/info.png
+    - assets/images/icons/first-aid-box.png
     - assets/images/home_slider/pramuka-siaga.jpg
     - assets/images/home_slider/pramuka-penggalang.jpg
     - assets/images/home_slider/pramuka-penegak.jpg
     - assets/images/home_slider/pramuka-pandega.jpg
     - assets/images/home_slider/pramuka-dewasa.jpeg
+    - assets/images/logo-saka/saka-informatika.png
     - assets/images/logo-saka/saka-milenial.png
     - assets/images/logo-saka/saka-bahari.png
     - assets/images/logo-saka/saka-bakti-husada.png
