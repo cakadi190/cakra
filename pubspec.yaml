@@ -42,6 +42,10 @@ dependencies:
   google_fonts: any
   get_storage: ^2.1.1
   carousel_slider: ^5.0.0
+  font_awesome_flutter: ^10.8.0
+  desktop_window: ^0.4.2
+  package_info_plus: ^8.1.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -79,12 +83,16 @@ flutter:
     - assets/images/icons/semaphore.png
     - assets/images/icons/pramuka.png
     - assets/images/icons/quiz.png
+    - assets/images/icons/info.png
     - assets/images/home_slider/pramuka-siaga.jpg
     - assets/images/home_slider/pramuka-penggalang.jpg
     - assets/images/home_slider/pramuka-penegak.jpg
+    - assets/images/home_slider/pramuka-pandega.jpg
+    - assets/images/home_slider/pramuka-dewasa.jpeg
     - assets/images/logo-saka/saka-milenial.png
     - assets/images/logo-saka/saka-bahari.png
     - assets/images/logo-saka/saka-bakti-husada.png
+    - assets/images/logo-saka/saka-pariwisata.png
     - assets/images/logo-saka/saka-bhayangkara.png
     - assets/images/logo-saka/saka-bina-sosial.png
     - assets/images/logo-saka/saka-dirgantara.png

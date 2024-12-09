@@ -1,92 +1,126 @@
+import 'package:cakra/models/navigation_tap_model.dart';
 import 'package:flutter/material.dart';
-
-class NavigationTapModel {
-  final String label;
-  final String image;
-  final Function() onTapTarget;
-
-  NavigationTapModel({
-    required this.label,
-    required this.image,
-    required this.onTapTarget,
-  });
-}
 
 class HomeGridNavigation extends StatelessWidget {
   const HomeGridNavigation({super.key});
 
-  List<NavigationTapModel> get _navigationItems => [
+  List<NavigationTapModel> _getNavigationItems(BuildContext context) => [
         NavigationTapModel(
           label: 'Semaphore',
           image: 'assets/images/icons/semaphore.png',
-          onTapTarget: () => print('Item 1 clicked'),
+          onTapTarget: () => debugPrint('Item 1 clicked'),
         ),
         NavigationTapModel(
           label: 'Peta',
           image: 'assets/images/icons/map.png',
-          onTapTarget: () => print('Item 2 clicked'),
+          onTapTarget: () => debugPrint('Item 2 clicked'),
         ),
         NavigationTapModel(
           label: 'Kecakapan',
           image: 'assets/images/icons/notepad.png',
-          onTapTarget: () => print('Item 3 clicked'),
+          onTapTarget: () => debugPrint('Item 3 clicked'),
         ),
         NavigationTapModel(
           label: 'SAKA',
           image: 'assets/images/icons/boy-scout.png',
-          onTapTarget: () => print('Item 4 clicked'),
+          onTapTarget: () => debugPrint('Item 4 clicked'),
         ),
         NavigationTapModel(
           label: 'Persandian',
           image: 'assets/images/icons/paper-plane.png',
-          onTapTarget: () => print('Item 5 clicked'),
-        ),
-        NavigationTapModel(
-          label: 'PramukaID',
-          image: 'assets/images/icons/pramuka.png',
-          onTapTarget: () => print('Item 6 clicked'),
+          onTapTarget: () => debugPrint('Item 5 clicked'),
         ),
         NavigationTapModel(
           label: 'Quiz',
           image: 'assets/images/icons/quiz.png',
-          onTapTarget: () => print('Item 7 clicked'),
+          onTapTarget: () => debugPrint('Item 7 clicked'),
         ),
         NavigationTapModel(
           label: 'Berita',
           image: 'assets/images/icons/newspaper.png',
-          onTapTarget: () => print('Item 8 clicked'),
+          onTapTarget: () => debugPrint('Item 8 clicked'),
+        ),
+        NavigationTapModel(
+          label: 'Lainnya',
+          image: 'assets/images/icons/info.png',
+          onTapTarget: () => {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+              ),
+              builder: (BuildContext context) {
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(16))),
+                  child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('Dasar Kepramukaan',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(fontWeight: FontWeight.bold)),
+                          ])),
+                );
+              },
+            )
+          },
         ),
       ];
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      primary: false,
-      padding: const EdgeInsets.all(8),
-      crossAxisSpacing: 4,
-      mainAxisSpacing: 4,
-      crossAxisCount: 4,
-      children: _navigationItems
-          .map((item) => InkWell(
-                onTap: item.onTapTarget,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 48,
-                        child: Image.asset(item.image),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding:
+              const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 4),
+          child: Text("Dasar Kepramukaan",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(fontWeight: FontWeight.bold)),
+        ),
+        GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          primary: false,
+          padding: const EdgeInsets.all(8),
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
+          crossAxisCount: 4,
+          children: _getNavigationItems(context)
+              .map((item) => InkWell(
+                    onTap: item.onTapTarget,
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 48,
+                            child: Image.asset(item.image),
+                          ),
+                          Text(item.label, textAlign: TextAlign.center),
+                        ],
                       ),
-                      Text(item.label, textAlign: TextAlign.center)
-                    ],
-                  ),
-                ),
-              ))
-          .toList(),
+                    ),
+                  ))
+              .toList(),
+        )
+      ],
     );
   }
 }

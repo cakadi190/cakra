@@ -8,21 +8,35 @@ class HomeSlider extends StatelessWidget {
       label: "Pramuka Siaga",
       image: "assets/images/home_slider/pramuka-siaga.jpg",
       onTapTarget: () {
-        print("Item 1 clicked");
+        debugPrint("Item 1 clicked");
       },
     ),
     NavigationTapModel(
       label: "Pramuka Penggalang",
       image: "assets/images/home_slider/pramuka-penggalang.jpg",
       onTapTarget: () {
-        print("Item 2 clicked");
+        debugPrint("Item 2 clicked");
       },
     ),
     NavigationTapModel(
       label: "Pramuka Penegak",
       image: "assets/images/home_slider/pramuka-penegak.jpg",
       onTapTarget: () {
-        print("Item 3 clicked");
+        debugPrint("Item 3 clicked");
+      },
+    ),
+    NavigationTapModel(
+      label: "Pramuka Pandega",
+      image: "assets/images/home_slider/pramuka-pandega.jpg",
+      onTapTarget: () {
+        debugPrint("Item 3 clicked");
+      },
+    ),
+    NavigationTapModel(
+      label: "Pramuka Dewasa",
+      image: "assets/images/home_slider/pramuka-dewasa.jpeg",
+      onTapTarget: () {
+        debugPrint("Item 3 clicked");
       },
     ),
   ];

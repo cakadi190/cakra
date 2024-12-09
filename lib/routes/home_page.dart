@@ -1,5 +1,6 @@
+import 'package:cakra/routes/about_page.dart';
 import 'package:cakra/routes/partials/homepage/home_grid_navigation.dart';
-import 'package:cakra/routes/partials/homepage/home_satuan_karya_slider.dart';
+import 'package:cakra/routes/partials/homepage/home_rover_scout_special_units_slider.dart';
 import 'package:cakra/routes/partials/homepage/home_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:cakra/states/dark_mode_controller.dart';
@@ -29,7 +30,9 @@ class _HomePageState extends State {
         home: Scaffold(
           appBar: AppBar(title: const Text("Beranda"), actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const AboutPage()),
+              ),
               icon: const Icon(Icons.info),
             ),
             Obx(() => IconButton(
@@ -45,7 +48,7 @@ class _HomePageState extends State {
               children: [
                 HomeSlider(),
                 const HomeGridNavigation(),
-                HomeSatuanKaryaSlider()
+                HomeRoverScoutSpecialUnitsSlider()
               ],
             ),
           ),

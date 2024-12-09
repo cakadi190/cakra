@@ -1,11 +1,18 @@
 import 'dart:async';
+import 'dart:io';
+import 'package:desktop_window/desktop_window.dart';
 
 import 'package:cakra/routes/home_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+void main() async {
+  if (Platform.isWindows) {
+    WidgetsFlutterBinding.ensureInitialized();
+    await DesktopWindow.setMinWindowSize(const Size(1280, 720));
+    await DesktopWindow.setMaxWindowSize(const Size(1280, 720));
+  }
   runApp(const CakraApp());
 }
 
