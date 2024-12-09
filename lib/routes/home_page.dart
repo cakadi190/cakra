@@ -1,8 +1,10 @@
+import 'package:cakra/components/palestine_banner.dart';
 import 'package:cakra/constants/theme.dart';
 import 'package:cakra/routes/about_page.dart';
-import 'package:cakra/routes/partials/homepage/home_grid_navigation.dart';
-import 'package:cakra/routes/partials/homepage/home_rover_scout_special_units_slider.dart';
-import 'package:cakra/routes/partials/homepage/home_slider.dart';
+import 'package:cakra/partials/homepage/home_explore_book.dart';
+import 'package:cakra/partials/homepage/home_grid_navigation.dart';
+import 'package:cakra/partials/homepage/home_rover_scout_special_units_slider.dart';
+import 'package:cakra/partials/homepage/home_slider.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,12 +40,15 @@ class _HomePageState extends State {
           body: const SingleChildScrollView(
             child: Column(
               children: [
+                PalestineBanner(),
                 HomeSlider(),
                 HomeGridNavigation(),
-                HomeRoverScoutSpecialUnitsSlider()
+                HomeRoverScoutSpecialUnitsSlider(),
+                HomeExploreBook()
               ],
             ),
           ),
         ));
   }
 }
+

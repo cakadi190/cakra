@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:cakra/constants/theme.dart';
 import 'package:cakra/helpers/device_helper.dart';
+import 'package:cakra/helpers/url_helper.dart';
 import 'package:desktop_window/desktop_window.dart';
 
 import 'package:cakra/routes/home_page.dart';
@@ -11,7 +12,7 @@ import 'package:get_storage/get_storage.dart';
 
 void main() async {
   await GetStorage.init();
-  
+
   if (Platform.isWindows) {
     WidgetsFlutterBinding.ensureInitialized();
     await DesktopWindow.setMinWindowSize(const Size(1280, 720));
@@ -75,9 +76,7 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
   void _navigateToHomePage() {
     if (mounted) {
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const HomePage())
-      );
+          context, MaterialPageRoute(builder: (context) => const HomePage()));
     }
   }
 
@@ -102,7 +101,8 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Expanded(child: SizedBox(height: 16)),
-            SizedBox(height: 128, child: Image.asset('assets/images/logo-main.png')),
+            SizedBox(
+                height: 128, child: Image.asset('assets/images/logo-main.png')),
             const SizedBox(height: 24),
             const Text(
               "Cakap Pramuka",
@@ -111,7 +111,8 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
             ),
             Text(
               _messages[_currentIndex],
-              style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+              style:
+                  const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -122,7 +123,6 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
                 child: CircularProgressIndicator(),
               ),
             ),
-
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -132,7 +132,9 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const Text("v1.0.0", style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
+                      const Text("0.0.1",
+                          style: TextStyle(fontSize: 16),
+                          textAlign: TextAlign.center),
                       const SizedBox(height: 4),
                       Builder(
                         builder: (context) {
@@ -144,14 +146,20 @@ class _CakraLandingPageState extends State<CakraLandingPage> {
                                 const TextSpan(text: "Copyright "),
                                 TextSpan(
                                   text: "Kodingin Digital Nusantara",
-                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).colorScheme.primary,
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                  recognizer: _tapGestureRecognizer
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                  recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      // UrlUtility.launchInBrowser('https://www.cakadi.web.id' as Uri);
+                                      UrlHelper.openUrl(
+                                          'https://www.kokodingin.id', context);
                                     },
                                 ),
                               ],

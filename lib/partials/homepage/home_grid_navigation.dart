@@ -41,8 +41,8 @@ class _HomeGridNavigationState extends State<HomeGridNavigation> {
           onTapTarget: () => debugPrint('Item 7 clicked'),
         ),
         NavigationTapModel(
-          label: 'Berita',
-          image: 'assets/images/icons/newspaper.png',
+          label: 'Simpul',
+          image: 'assets/images/icons/reef-knot.png',
           onTapTarget: () => debugPrint('Item 8 clicked'),
         ),
         NavigationTapModel(
